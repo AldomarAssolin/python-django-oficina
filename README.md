@@ -73,7 +73,7 @@ O uso de `python -m pip` associa a instalação ao interpretador Python selecion
 
 ## Criando o projeto
 
-Dentro da pasta `carros`, execute:
+Dentro da pasta `oficina`, execute:
 
 ```bash
 django-admin startproject core .
@@ -104,9 +104,9 @@ A pasta `venv/` faz parte do ambiente preparado para o projeto, mas não é gera
 
 | Arquivo | Responsabilidade |
 | --- | --- |
-| `manage.py` | Permite executar comandos administrativos, como iniciar o servidor, criar cores e trabalhar com migrações. Define o valor padrão de `DJANGO_SETTINGS_MODULE` como `core.settings`; o Django carrega a configuração indicada. |
+| `manage.py` | Permite executar comandos administrativos, como iniciar o servidor, criar core e trabalhar com migrações. Define o valor padrão de `DJANGO_SETTINGS_MODULE` como `core.settings`; o Django carrega a configuração indicada. |
 | `core/__init__.py` | Identifica o diretório `core/` como um pacote Python regular. |
-| `core/settings.py` | Centraliza configurações de banco de dados, idioma, fuso horário, arquivos estáticos e cores instalados. |
+| `core/settings.py` | Centraliza configurações de banco de dados, idioma, fuso horário, arquivos estáticos e core instalados. |
 | `core/urls.py` | Declara as rotas do projeto, associando caminhos de URL a views ou a outros conjuntos de rotas. |
 | `core/wsgi.py` | Disponibiliza o ponto de entrada para servidores compatíveis com WSGI, uma interface síncrona. |
 | `core/asgi.py` | Disponibiliza o ponto de entrada para servidores compatíveis com ASGI, que suporta execução assíncrona. |
