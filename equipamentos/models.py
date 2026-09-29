@@ -9,12 +9,12 @@ class Equipment(models.Model):
         MANUTENCAO = 'MANUTENCAO' , 'Em Manutenção'
         INATIVO = 'INATIVO', 'Inativo / Desativado'
 
-    name = models.CharField(verbose_name="Nome",max_length=150,)
-    id_code = models.CharField(verbose_name="Código de Identificação",max_length=20, unique=True, default="EQP-XXX")
-    brand = models.CharField(verbose_name="Marca",max_length=100,)
-    manufacturer = models.CharField(verbose_name="Fabricante",max_length=50,)
-    model = models.CharField(verbose_name="Modelo",max_length=100,)
-    serial_number = models.CharField(verbose_name="Número de Série",max_length=100, unique=True, )
+    name = models.CharField(verbose_name="Nome",max_length=150, blank=False, null=False)
+    id_code = models.CharField(verbose_name="Código de Identificação",max_length=20, unique=True, blank=False, null=False)
+    brand = models.CharField(verbose_name="Marca",max_length=100, blank=False, null=False)
+    manufacturer = models.CharField(verbose_name="Fabricante",max_length=50, blank=False, null=False)
+    model = models.CharField(verbose_name="Modelo",max_length=100, blank=False, null=False)
+    serial_number = models.BigIntegerField(verbose_name="Número de Série",blank=False, null=False)
     purchase_date = models.DateField(verbose_name="Data Compra",blank=False, null=False)
     purchase_value = models.DecimalField(verbose_name="Valor Compra",max_digits=10, decimal_places=2,)
 
