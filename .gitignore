@@ -1,0 +1,26 @@
+# Python / Ambiente Virtual
+venv/
+.venv/
+env/
+__pycache__/
+*.py[cod]
+
+# Banco de dados local (NUNCA SUBIR)
+*.sqlite3
+*.db
+
+# Arquivos de Mídia e Uploads do Usuário (Imagens dos carros/equipamentos)
+media/
+
+# Variáveis de ambiente e segredos (Chaves de API, Secret Key)
+.env
+.env.local
+
+# Arquivos de IDE / Editores de código
+.vscode/
+.idea/
+*.swp
+
+# Arquivos de Sistema Operacional
+.DS_Store
+Thumbs.db
