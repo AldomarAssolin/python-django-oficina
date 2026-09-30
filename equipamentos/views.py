@@ -7,7 +7,13 @@ from equipamentos.models import Equipment
 def equipaments_views(request):
     # Otimização ORM: Carrega apenas os campos necessários para a listagem
     equipaments = Equipment.objects.all().only(
-        'id_code', 'name', 'brand', 'model', 'status', 'last_maintenance_date', 'images'
+        'id_code', 
+        'name', 
+        'brand', 
+        'model', 
+        'status', 
+        'last_maintenance_date', 
+        'images'
     )
 
     context = {

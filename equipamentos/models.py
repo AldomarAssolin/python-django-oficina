@@ -37,12 +37,18 @@ class Equipment(models.Model):
         verbose_name_plural = "Equipamentos"
         ordering = ['-created_at']
 
-    def save(self, *args, **kwargs):
-        """Higieniza o id_code para caixa alta antes de salvar."""
-
+    def clean(self):
+        """Normaliza os dados antes das validações de formulário e unicidade."""
+        super().clean()
         if self.id_code:
+            # Normaliza o id_code para a forma canônica (caixa alta e sem espaços)
             self.id_code = self.id_code.strip().upper()
 
+    def save(self, *args, **kwargs):
+        """Executa a validação e higienização antes de persistir no banco."""
+        
+        # Garante que o clean() seja chamado mesmo se o objeto for salvo via ORM / Shell
+        self.full_clean()
         super().save(*args, **kwargs)
 
     @property
