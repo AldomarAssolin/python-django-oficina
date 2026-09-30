@@ -16,7 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
+from django.conf import settings
+from django.conf.urls.static import static
+from django.shortcuts import redirect # Importe o redirect
+
+from equipamentos.views import equipaments_views
+
 
 urlpatterns = [
+    # Redireciona a rota vazia '/' direto para o '/admin/'
+    path('', lambda request: redirect('admin:index')), 
     path('admin/', admin.site.urls),
-]
+    path('equipamentos/', equipaments_views, name='equipamentos')
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
