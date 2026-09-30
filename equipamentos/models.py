@@ -37,13 +37,13 @@ class Equipment(models.Model):
         verbose_name_plural = "Equipamentos"
         ordering = ['-created_at']
 
-    def save(self, *args, **kargs):
+    def save(self, *args, **kwargs):
         """Higieniza o id_code para caixa alta antes de salvar."""
 
         if self.id_code:
             self.id_code = self.id_code.strip().upper()
 
-        super().save(*args, **kargs)
+        super().save(*args, **kwargs)
 
     @property
     def next_maintenance(self):
