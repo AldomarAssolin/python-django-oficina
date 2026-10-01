@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 
 from equipamentos.models import Equipment
 
@@ -28,3 +28,17 @@ def equipments_views(request):
         context
     )
 
+
+def equipment_detail_view(request,id_code):
+    # Busca o equipamento pelo código de identificação (id_code)
+    equipment = get_object_or_404(Equipment, id_code=id_code)
+
+    context = {
+        'equipment': equipment,
+    }
+
+    return render(
+        request,
+        'equipamentos/detail.html',
+        context
+    )
