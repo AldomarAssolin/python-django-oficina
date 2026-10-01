@@ -12,18 +12,18 @@
 
     <article>
         <ul class="list-group">
-            {% for equipament in equipaments %}
+            {% for equipment in equipments %}
                 <li class="list-group-item d-flex justify-content-between align-items-center">
                     <div>
-                        <strong>{{ equipament.id_code }}</strong> - {{ equipament.name }}
+                        <strong>{{ equipment.id_code }}</strong> - {{ equipment.name }}
                         <br>
-                        <small class="text-muted">Marca: {{ equipament.brand }} | Modelo: {{ equipament.model }}</small>
+                        <small class="text-muted">Marca: {{ equipment.brand }} | Modelo: {{ equipment.model }}</small>
                     </div>
                     
                     <div class="text-end">
                         {# get_status_display traz o rótulo amigável configurado no TextChoices #}
-                        <span class="badge {% if equipament.status == 'ATIVO' %}bg-success{% elif equipament.status == 'MANUTENCAO' %}bg-warning{% else %}bg-danger{% endif %}">
-                            {{ equipament.get_status_display }}
+                        <span class="badge {% if equipment.status == 'ATIVO' %}bg-success{% elif equipment.status == 'MANUTENCAO' %}bg-warning{% else %}bg-danger{% endif %}">
+                            {{ equipment.get_status_display }}
                         </span>
                     </div>
                 </li>
