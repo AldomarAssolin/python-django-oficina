@@ -126,3 +126,35 @@ class EquipmentViewTest(TestCase):
 
         # Opcional: Garante que a mensagem amigavel de lista vazia foi renderizada no HTML
         self.assertContains(response, "Nenhum equipamento cadastrado")
+
+    # Equipments Details
+    def test_equipment_detail_returns_status_code_200(self):
+        """Testa se a view de detalhe do equipamento retorna status code 200."""
+        detail_url = reverse('detail', kwargs={'id_code': self.eq1.id_code})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 200)
+
+    def test_equipment_detail_uses_correct_template(self):
+        """Testa se a view de detalhe do equipamento utiliza o template correto."""
+        detail_url = reverse('detail', kwargs={'id_code': self.eq1.id_code})
+        response = self.client.get(detail_url)
+        self.assertTemplateUsed(response, 'equipamentos/detail.html')
+
+    def test_equipment_detail_detail_renders_correct_equipment(self):
+        """Testa se a view de detalhe do equipamento renderiza o equipamento correto."""
+        detail_url = reverse('detail', kwargs={'id_code': self.eq1.id_code})
+        response = self.client.get(detail_url)
+        self.assertContains(response, "Elevador Hidráulico")
+
+    def test_equipment_detail_returns_404_unknown_equipment(self):
+        """Testa se a view de detalhe do equipamento retorna 404 para um id_code desconhecido."""
+        detail_url = reverse('detail', kwargs={'id_code': 'EQP-999'})
+        response = self.client.get(detail_url)
+        self.assertEqual(response.status_code, 404)
+
+    def test_equipment_detail_contains_correct_equipment_in_context(self):
+        """Testa se a view de detalhe do equipamento passa o equipamento correto no contexto."""
+        detail_url = reverse('detail', kwargs={'id_code': self.eq1.id_code})
+        response = self.client.get(detail_url)
+        equipment_in_context = response.context['equipment']
+        self.assertEqual(equipment_in_context, self.eq1)

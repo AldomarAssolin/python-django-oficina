@@ -20,12 +20,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.shortcuts import redirect # Importe o redirect
 
-from equipamentos.views import equipments_views
+from equipamentos.views import equipments_views, equipment_detail_view
 
 
 urlpatterns = [
     # Redireciona a rota vazia '/' direto para o '/admin/'
     path('', lambda request: redirect('admin:index')), 
     path('admin/', admin.site.urls),
-    path('equipamentos/', equipments_views, name='equipamentos')
+    path('equipamentos/', equipments_views, name='equipamentos'),
+    path('equipamentos/<str:id_code>/', equipment_detail_view, name='detail')
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
